@@ -105,6 +105,7 @@ Build data-driven customer lifecycle management
 Download the .pbix file → Open in Power BI Desktop → Explore dashboard visuals using slicers and filters.
 
 👤 Author
+
 Neela Vinay
 Data Analyst | Power BI Developer
 
