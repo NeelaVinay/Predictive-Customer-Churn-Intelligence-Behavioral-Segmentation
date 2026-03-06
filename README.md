@@ -1,6 +1,6 @@
-# Credit-Card-Customer-Churn-Intelligence-Dashboard
+# Predictive-Customer-Churn-Intelligence-Behavioral-Segmentation
 
-📌 Credit Card Customer Churn Analysis — Power BI | Data Analytics
+📌 Credit Card Customer Churn Analysis — Excel, Power BI | Data Analytics
 
 A predictive churn analysis built in Power BI, identifying high-risk customer segments, behavioral dropout signals, and revenue-impact patterns from 10K+ Harbor Trust Bank records. Includes a full churn-intelligence dashboard with dynamic segmentation and transaction-based risk indicators.
 This project analyzes why customers leave credit card services for Harbor Trust Bank and builds a complete churn-intelligence system using Power BI.
