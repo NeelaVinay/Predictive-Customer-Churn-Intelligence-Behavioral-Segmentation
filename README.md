@@ -11,7 +11,6 @@ Harbor Trust Bank was losing credit card customers at a **16.1% annual churn rat
 
 - Identifies **who** is churning and **why**
 - Segments customers by **behavioral risk tier**
-- Provides a **predictive scoring model** (Random Forest, AUC ~0.97)
 - Delivers actionable **Power BI dashboards** for retention teams
 
 ---
