@@ -94,10 +94,10 @@ Customers flagged as **High-Risk** meet 3+ of the following conditions:
 
 ### SQL
 ```sql
--- SQLite
-.mode csv
-.import BankChurners.csv bank_churners
-.read sql/churn_analysis.sql
+-- SETUP (MySQL)
+-- ─────────────────────────────────────────────
+-- Note: Replace with your actual table creation or LOAD DATA syntax
+-- LOAD DATA INFILE 'BankChurners.csv' INTO TABLE drivers FIELDS TERMINATED BY ',';
 
 -- PostgreSQL
 COPY bank_churners FROM 'BankChurners.csv' DELIMITER ',' CSV HEADER;
