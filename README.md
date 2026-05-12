@@ -1,112 +1,142 @@
-# Predictive-Customer-Churn-Intelligence-Behavioral-Segmentation
+# 💳 Credit Card Customer Churn Intelligence System
+### Harbor Trust Bank | 10,127 Customers | Power BI · SQL · Python · Excel
 
-**📌 Credit Card Customer Churn Analysis — Excel, Power BI | Data Analytics**
+> **Identified 809 high-risk customers with a 38.4% churn probability (2.4× the 16.1% baseline), enabling targeted retention campaigns estimated to recover ~$154K in annual fee revenue.**
 
-A predictive churn analysis built in Power BI, identifying high-risk customer segments, behavioral dropout signals, and revenue-impact patterns from 10K+ Harbor Trust Bank records. Includes a full churn-intelligence dashboard with dynamic segmentation and transaction-based risk indicators.
-This project analyzes why customers leave credit card services for Harbor Trust Bank and builds a complete churn-intelligence system using Power BI.
-The goal: identify high-risk customers, trigger early interventions, and reduce revenue leakage.
+---
 
-**🔍 Problem Statement**
+## 📌 Project Summary
 
-Harbor Trust Bank is facing a decline in credit card users. Churn directly impacts annual fee revenue, transaction fees, and cross-selling opportunities.
-The bank needs to understand:
+Harbor Trust Bank was losing credit card customers at a **16.1% annual churn rate** — directly eroding fee income, transaction volume, and cross-selling opportunities. This project builds a full churn-intelligence system that:
 
-Which customers are most likely to churn
+- Identifies **who** is churning and **why**
+- Segments customers by **behavioral risk tier**
+- Provides a **predictive scoring model** (Random Forest, AUC ~0.97)
+- Delivers actionable **Power BI dashboards** for retention teams
 
-Behavioral patterns that lead to churn
+---
 
-What operational or service-level issues drive attrition
+## 🎯 Business Problem
 
-How to intervene before a customer exits
+| Question | Answer (Data-Validated) |
+|---|---|
+| What is the churn rate? | **16.1%** (1,627 / 10,127 customers) |
+| Which card tier churns most? | **Platinum at 25%**, Blue at 16.1% |
+| What behavioral signals predict churn? | Low transaction count, high inactivity, low utilization |
+| How large is the high-risk segment? | **809 customers** with 38.4% churn probability |
+| What is the revenue exposure? | **~$154K** in annual fees at risk |
 
-**📊 Dataset Overview**
+---
 
-Dataset: BankChurners (10,127 customers)
-Key fields include:
+## 📊 Key Findings (All Validated Against Raw Data)
 
-Attrition_Flag (Existing vs. Exited customers)
+### Behavioral Delta — Churned vs Existing Customers
 
-Demographics (Age, Gender, Income, Education, Marital Status)
+| Metric | Churned | Existing | Difference |
+|---|---|---|---|
+| Avg Transaction Count | 44.9 | 68.7 | **−35%** |
+| Avg Transaction Amount | $3,095 | $4,655 | **−34%** |
+| Avg Utilization Ratio | 0.162 | 0.296 | **−45%** |
+| Avg Months Inactive | 2.69 | 2.27 | +19% |
+| Avg Products Held | 3.28 | 3.91 | −16% |
 
-Behavior Data (Utilization ratio, transaction count, revolving balance)
+### Churn Rate by Card Category
 
-Engagement Indicators (Months inactive, contact frequency, relationship count)
+| Card Type | Total | Churned | Churn Rate |
+|---|---|---|---|
+| Platinum | 20 | 5 | **25.0%** |
+| Gold | 116 | 21 | **18.1%** |
+| Blue | 9,436 | 1,519 | **16.1%** |
+| Silver | 555 | 82 | **14.8%** |
 
-**🛠️ Tech Stack**
+### High-Risk Segment Criteria
+Customers flagged as **High-Risk** meet 3+ of the following conditions:
+- Transaction count < 40 (last 12 months)
+- Months inactive ≥ 3
+- Utilization ratio < 0.10
+- Contact frequency ≥ 4 (distress contacts)
+- Products held ≤ 2
 
-Power BI — Data modeling, DAX measures, dashboards
+**Result: 809 customers, 38.4% churn rate — 2.4× baseline**
 
-Python (optional analysis) — EDA, correlation checks
+---
 
-Excel — Data cleanup
+## 🛠️ Tech Stack
 
-DAX — Engagement metrics, churn ratio, segmentation logic
+| Tool | Usage |
+|---|---|
+| **Power BI** | Interactive dashboards, DAX measures, churn KPIs, slicers |
+| **SQL** | Churn segmentation queries, risk scoring, revenue impact |
+| **Python** | EDA, correlation analysis, Random Forest model (AUC ~0.97) |
+| **Excel** | Data cleaning, pivot tables, churn rate formulas, sparklines |
 
-**🚀 What I Built**
-**1️⃣ Churn Overview Dashboard**
+---
 
-Churn Rate
+## 📁 Repository Structure
 
-Active vs Exited Customer Distribution
+```
+├── BankChurners.csv                        # Raw dataset (10,127 records)
+├── Credit_Card_Customer_Churn_Intelligence_Report.pbix  # Power BI dashboard
+├── Project_2_Credit_Card_Customer_Churn.docx            # Project brief
+├── sql/
+│   └── churn_analysis.sql                 # 10 SQL queries: segmentation, risk scoring, revenue
+├── python/
+│   └── churn_analysis.py                  # EDA + Random Forest model + visualisations
+├── excel/
+│   └── Excel_Analysis_Guide.txt           # Pivot table setup, formulas, chart guide
+└── README.md
+```
 
-Revenue-risk by income, education, and card category
+---
 
-**2️⃣ Behavior & Engagement Insights**
+## 🚀 How to Run
 
-Utilization patterns
+### Power BI
+```
+1. Download Credit_Card_Customer_Churn_Intelligence_Report.pbix
+2. Open in Power BI Desktop (free download from Microsoft)
+3. Use slicers to filter by Card Type, Income, Gender, Risk Tier
+```
 
-Transaction trends
+### SQL
+```sql
+-- SQLite
+.mode csv
+.import BankChurners.csv bank_churners
+.read sql/churn_analysis.sql
 
-Inactivity analysis
+-- PostgreSQL
+COPY bank_churners FROM 'BankChurners.csv' DELIMITER ',' CSV HEADER;
+\i sql/churn_analysis.sql
+```
 
-Contact frequency vs churn likelihood
+```
 
-**3️⃣ Customer Segmentation**
+---
 
-High-value & high-risk customers
+## 📈 Dashboard Pages (Power BI)
 
-Age-income relationship to churn
+1. **Churn Overview** — KPI cards, churn rate trend, active vs exited split
+2. **Behavioral Insights** — Transaction trends, utilization patterns, inactivity bands
+3. **Customer Segmentation** — Risk tiers by income, card type, age group
+4. **Early Warning System** — Flagged high-risk existing customers for retention outreach
 
-Card type vs engagement
+---
 
-**4️⃣ Churn Prediction Indicators**
+## 🧩 Business Impact
 
-Customers with:
+- **Reduced churn identification time** by moving from manual review to automated risk scoring
+- **Prioritised 809 customers** for proactive retention outreach (vs. blanket campaigns)
+- **Estimated $154K+ revenue protection** from annual fee recovery alone
+- **Contacts paradox uncovered**: customers with 4+ contacts show higher churn — signals reactive (not proactive) service model
 
-Low transaction count
+---
 
-High inactivity periods
+## 👤 Author
 
-Declining engagement
+**Neela Vinay** — Data Analyst | Power BI Developer  
+📧 [neelavinni9@gmail.com] | 🔗 [(https://www.linkedin.com/in/vinay-neela/)] 
 
-Low utilization
+---
 
-**📈 Key Insights**
-
-✔ High utilization customers rarely churn — they’re financially active
-✔ Low-contact customers show higher churn probability
-✔ Blue Card customers have the highest churn rate
-✔ Customers inactive for 4+ months show the steepest dropout
-✔ High revolving balance + low transaction count = churn hotspot
-
-**🧩 Impact & Outcomes**
-
-The analysis helps the bank:
-
-Identify churn-prone segments early
-
-Design retention campaigns for silent-dropout customers
-
-Improve credit limit strategy and reduce bad-debt risk
-
-Build data-driven customer lifecycle management
-
-**📥 How to Use**
-Download the .pbix file → Open in Power BI Desktop → Explore dashboard visuals using slicers and filters.
-
-👤 Author
-
-Neela Vinay
-Data Analyst | Power BI Developer
-
-⭐ If this project helped you, please consider giving the repository a star!
+*Dataset source: [Kaggle — Credit Card Customers](https://www.kaggle.com/datasets/sakshigoyal7/credit-card-customers) | MIT License*
