@@ -67,8 +67,7 @@ Customers flagged as **High-Risk** meet 3+ of the following conditions:
 |---|---|
 | **Power BI** | Interactive dashboards, DAX measures, churn KPIs, slicers |
 | **SQL** | Churn segmentation queries, risk scoring, revenue impact |
-| **Python** | EDA, correlation analysis, Random Forest model (AUC ~0.97) |
-| **Excel** | Data cleaning, pivot tables, churn rate formulas, sparklines |
+| **Excel** | Data cleaning |
 
 ---
 
@@ -79,11 +78,7 @@ Customers flagged as **High-Risk** meet 3+ of the following conditions:
 ├── Credit_Card_Customer_Churn_Intelligence_Report.pbix  # Power BI dashboard
 ├── Project_2_Credit_Card_Customer_Churn.docx            # Project brief
 ├── sql/
-│   └── churn_analysis.sql                 # 10 SQL queries: segmentation, risk scoring, revenue
-├── python/
-│   └── churn_analysis.py                  # EDA + Random Forest model + visualisations
-├── excel/
-│   └── Excel_Analysis_Guide.txt           # Pivot table setup, formulas, chart guide
+│   └── Customer_churn_SQL_Analysis.sql                 # 10 SQL queries: segmentation, risk scoring, revenue
 └── README.md
 ```
 
