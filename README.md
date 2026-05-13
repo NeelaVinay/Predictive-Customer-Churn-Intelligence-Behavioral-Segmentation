@@ -1,7 +1,7 @@
 # 💳 Credit Card Customer Churn Intelligence System
 ### Harbor Trust Bank | 10,127 Customers | Power BI · SQL · Python · Excel
 
-> **Identified 809 high-risk customers with a 38.4% churn probability (2.4× the 16.1% baseline), enabling targeted retention campaigns estimated to recover ~$154K in annual fee revenue.**
+> **Identified 809 high-risk customers with a 38.4% churn probability (2.4× the 16.1% baseline), enabling targeted retention campaigns estimated to recover ~$170K in annual fee revenue.**
 
 ---
 
@@ -23,7 +23,7 @@ Harbor Trust Bank was losing credit card customers at a **16.1% annual churn rat
 | Which card tier churns most? | **Platinum at 25%**, Blue at 16.1% |
 | What behavioral signals predict churn? | Low transaction count, high inactivity, low utilization |
 | How large is the high-risk segment? | **809 customers** with 38.4% churn probability |
-| What is the revenue exposure? | **~$154K** in annual fees at risk |
+| What is the revenue exposure? | **~$170K** in annual fees at risk |
 
 ---
 
@@ -121,7 +121,7 @@ COPY bank_churners FROM 'BankChurners.csv' DELIMITER ',' CSV HEADER;
 
 - **Reduced churn identification time** by moving from manual review to automated risk scoring
 - **Prioritised 809 customers** for proactive retention outreach (vs. blanket campaigns)
-- **Estimated $154K+ revenue protection** from annual fee recovery alone
+- **Estimated $170K revenue protection** from annual fee recovery alone
 - **Contacts paradox uncovered**: customers with 4+ contacts show higher churn — signals reactive (not proactive) service model
 
 ---
