@@ -113,7 +113,7 @@ GROUP BY Contacts_Count_12_mon
 ORDER BY Contacts_Count_12_mon;
 
 
--- 8. REVENUE AT RISK ESTIMATE
+-- 8. REVENUE AT RISK ESTIMATE BLUE CATEGORY
 
 SELECT
     SUM(CASE WHEN Attrition_Flag = 'Attrited Customer' THEN Total_Trans_Amt ELSE 0 END)
@@ -123,6 +123,33 @@ SELECT
     ROUND(AVG(CASE WHEN Attrition_Flag = 'Attrited Customer' THEN Total_Trans_Amt END), 0)
         AS avg_churned_customer_spend
 FROM bankchurners;
+
+-- REVENUE AT RISK ESTIMATE
+
+WITH fee_table AS (
+    SELECT 'Blue'     AS card, 95  AS fee UNION ALL
+    SELECT 'Silver',            195         UNION ALL
+    SELECT 'Gold',              295         UNION ALL
+    SELECT 'Platinum',          595
+),
+churn_counts AS (
+    SELECT
+        Card_Category,
+        COUNT(*)  AS churned_count
+    FROM BankChurners
+    WHERE Attrition_Flag = 'Attrited Customer'
+    GROUP BY Card_Category
+)
+SELECT
+    c.Card_Category,
+    c.churned_count,
+    f.fee                           AS annual_fee_usd,
+    c.churned_count * f.fee         AS revenue_at_risk,
+    ROUND(c.churned_count * 100.0
+        / SUM(c.churned_count) OVER(), 1) AS pct_of_churned
+FROM churn_counts c
+JOIN fee_table f ON f.card = c.Card_Category
+ORDER BY revenue_at_risk DESC;
 
 
 -- 9. CHURN PREDICTION FLAG — Early Warning Score
